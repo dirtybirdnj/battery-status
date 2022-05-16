@@ -26,3 +26,15 @@ functions:
       - httpApi:
           path: /add
           method: post
+  edit:
+    handler: handler.editCharger
+    events:
+      - httpApi:
+          path: /edit
+          method: post
+  delete:
+    handler: handler.deleteCharger
+    events:
+      - httpApi:
+          path: /delete
+          method: post
