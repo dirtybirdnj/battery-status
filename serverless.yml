@@ -15,8 +15,14 @@ functions:
           path: /hello
           method: get
   index:
-    handler: handler.index
+    handler: handler.listChargers
     events:
       - httpApi:
           path: /
           method: get
+  add:
+    handler: handler.addCharger
+    events:
+      - httpApi:
+          path: /add
+          method: post
