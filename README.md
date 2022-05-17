@@ -16,6 +16,14 @@ A sample API designed to to provide status information on a fleet of battery cha
 
 ## Usage
 
+```
+serverless invoke local --function index
+serverless invoke local --function add
+serverless invoke local --function edit
+serverless invoke local --function delete
+
+```
+
 ### Deployment
 
 ```

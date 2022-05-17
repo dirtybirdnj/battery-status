@@ -1,0 +1,19 @@
+{
+  "name": "battery-status",
+  "version": "1.0.0",
+  "description": "battery status tracking API for serverless / aws",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dirtybirdnj/battery-status.git"
+  },
+  "author": "Mat Gilbert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dirtybirdnj/battery-status/issues"
+  },
+  "homepage": "https://github.com/dirtybirdnj/battery-status#readme"
+}

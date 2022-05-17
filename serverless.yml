@@ -8,12 +8,6 @@ provider:
   runtime: nodejs14.x
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - httpApi:
-          path: /hello
-          method: get
   index:
     handler: handler.listChargers
     events:
@@ -27,13 +21,13 @@ functions:
           path: /add
           method: post
   edit:
-    handler: handler.editCharger
+    handler: handler.updateCharger
     events:
       - httpApi:
           path: /edit
           method: post
   delete:
-    handler: handler.deleteCharger
+    handler: handler.removeCharger
     events:
       - httpApi:
           path: /delete
