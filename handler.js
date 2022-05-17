@@ -105,12 +105,13 @@ const removeCharger = async (event) => {
 const jsonFormat = function(statusCode, message, body, event){
 
   return {
+    headers: { "content-type": "application/json" },
     statusCode: statusCode,
     body: JSON.stringify(
       {
         message: message,
         input: event,
-        body: body
+        ...body
       },
       null,
       2
