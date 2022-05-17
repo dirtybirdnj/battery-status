@@ -1,6 +1,5 @@
 "use strict";
 
-
 const listChargers = async (event) => {
 
   const chargerList = [

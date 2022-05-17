@@ -6,6 +6,11 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  environment:
+    AWS_RDS_ENDPOINT: ${param:AWS_RDS_ENDPOINT}
+    AWS_RDS_DATABASE: ${param:AWS_RDS_DATABASE}
+    AWS_RDS_USERNAME: ${param:AWS_RDS_USERNAME}
+    AWS_RDS_PASSWORD: ${param:AWS_RDS_PASSWORD}
 
 functions:
   index:
@@ -32,3 +37,19 @@ functions:
       - httpApi:
           path: /delete
           method: post
+
+plugins:
+  - serverless-plugin-swagger-ui
+
+custom:
+  swaggerUi:
+    swaggerUiConfig: # default value is the below
+      dom_id: '#swagger-ui'
+      deepLinking: true
+      presets:
+        - SwaggerUIBundle.presets.apis
+        - SwaggerUIStandalonePreset
+      plugins:
+        - SwaggerUIBundle.plugins.DownloadUrl
+      layout:
+        - StandaloneLayout
