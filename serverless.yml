@@ -41,20 +41,5 @@ functions:
           path: /delete
           method: post
 
-resources:
-  Resources:
-    S3Assets:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: battery-status-assets
-
 plugins:
-  - serverless-plugin-swagger-ui
-
-custom:
-  swaggerUi:
-    s3Bucket: battery-status-assets
-    exportType: swagger
-    accepts: application/json
-    swaggerUiConfig:
-      supportedSubmitMethods: []
+  - serverless-auto-swagger
