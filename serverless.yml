@@ -40,13 +40,3 @@ functions:
       - httpApi:
           path: /delete
           method: post
-
-plugins:
-  - serverless-plugin-swagger-ui
-
-custom:
-  swaggerUi:
-    exportType: swagger
-    accepts: application/json
-    swaggerUiConfig:
-      supportedSubmitMethods: []
