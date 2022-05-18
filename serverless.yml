@@ -1,3 +1,6 @@
+
+useDotenv: true
+
 org: vtapi
 app: battery-status
 service: battery-status

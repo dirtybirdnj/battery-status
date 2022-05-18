@@ -1,59 +1,78 @@
 "use strict";
 
+const mysql = require('serverless-mysql')({
+  config: {
+    host     : process.env.AWS_RDS_ENDPOINT,
+    database : process.env.AWS_RDS_DATABASE,
+    user     : process.env.AWS_RDS_USERNAME,
+    password : process.env.AWS_RDS_PASSWORD
+  },
+  library: require('mysql2')
+});
+
 const listChargers = async (event) => {
 
-  const chargerList = [
-    {
-      id: "BTV_001",
-      name: "BETA HQ Office Pad 1",
-      description: "Located on the right back corner of the pad towards office door",
-      status: "Idle",
-      location: {
-        lat: 44.466527,
-        lng:-73.153787
-      },
-      networkProtocol: 'OCPP 1.6',
-      public: false
-    },
-    {
-      id: "BTV_002",
-      name: "BETA HQ Office Pad 2",
-      description: "Directly to the left of the landing pad on charging side of plane",
-      status: "Idle",
-      location: {
-        lat: 44.466527,
-        lng:-73.153787
-      },
-      networkProtocol: 'OCPP 1.6',
-      public: false
-    },
-    {
-      id: "BTV_003",
-      name: "BETA HQ Garage 1",
-      description: "Test charger in garage bay, left side of door",
-      status: "Idle",
-      location: {
-        lat: 44.466761,
-        lng: -73.154948
-      },
-      networkProtocol: 'OCPP 2.0',
-      public: false
-    },
-    {
-      id: "BTV_003",
-      name: "BETA HQ Outside 1",
-      description: "Outdoor unit for small equiptment and other low power requirement vehicles",
-      status: "Idle",
-      location: {
-        lat: 44.466761,
-        lng: -73.154948
-      },
-      networkProtocol: 'OCPP 1.5',
-      public: false
-    }
-  ];
 
-  return jsonFormat(200, "List of chargers", chargerList, event);
+  console.log('test');
+
+  const listQuery = 'SELECT * FROM `battery-status`.`chargers` ORDER BY `id` LIMIT 300 OFFSET 0;';
+  let results = await mysql.query(listQuery)
+
+
+  // const chargerList = [
+  //   {
+  //     id: "BTV_001",
+  //     name: "BETA HQ Office Pad 1",
+  //     description: "Located on the right back corner of the pad towards office door",
+  //     status: "Idle",
+  //     location: {
+  //       lat: 44.466527,
+  //       lng:-73.153787
+  //     },
+  //     networkProtocol: 'OCPP 1.6',
+  //     public: false
+  //   },
+  //   {
+  //     id: "BTV_002",
+  //     name: "BETA HQ Office Pad 2",
+  //     description: "Directly to the left of the landing pad on charging side of plane",
+  //     status: "Idle",
+  //     location: {
+  //       lat: 44.466527,
+  //       lng:-73.153787
+  //     },
+  //     networkProtocol: 'OCPP 1.6',
+  //     public: false
+  //   },
+  //   {
+  //     id: "BTV_003",
+  //     name: "BETA HQ Garage 1",
+  //     description: "Test charger in garage bay, left side of door",
+  //     status: "Idle",
+  //     location: {
+  //       lat: 44.466761,
+  //       lng: -73.154948
+  //     },
+  //     networkProtocol: 'OCPP 2.0',
+  //     public: false
+  //   },
+  //   {
+  //     id: "BTV_003",
+  //     name: "BETA HQ Outside 1",
+  //     description: "Outdoor unit for small equiptment and other low power requirement vehicles",
+  //     status: "Idle",
+  //     location: {
+  //       lat: 44.466761,
+  //       lng: -73.154948
+  //     },
+  //     networkProtocol: 'OCPP 1.5',
+  //     public: false
+  //   }
+  // ];
+
+  mysql.quit();
+
+  return jsonFormat(200, "List of chargers", results, event);
 };
 
 const addCharger = async (event) => {
