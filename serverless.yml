@@ -46,14 +46,14 @@ resources:
     S3Assets:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${self:service}-${self:provider.stage}-assets
+        BucketName: battery-status-assets
 
 plugins:
   - serverless-plugin-swagger-ui
 
 custom:
   swaggerUi:
-    s3Bucket: ${self:service}-${self:provider.stage}-assets
+    s3Bucket: battery-status-assets
     exportType: swagger
     accepts: application/json
     swaggerUiConfig:
