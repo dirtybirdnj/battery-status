@@ -43,16 +43,3 @@ functions:
 
 plugins:
   - serverless-plugin-swagger-ui
-
-custom:
-  swaggerUi:
-    swaggerUiConfig: # default value is the below
-      dom_id: '#swagger-ui'
-      deepLinking: true
-      presets:
-        - SwaggerUIBundle.presets.apis
-        - SwaggerUIStandalonePreset
-      plugins:
-        - SwaggerUIBundle.plugins.DownloadUrl
-      layout:
-        - StandaloneLayout
