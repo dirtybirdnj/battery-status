@@ -40,3 +40,14 @@ functions:
       - httpApi:
           path: /delete
           method: post
+
+plugins:
+  - serverless-plugin-swagger-ui
+
+custom:
+  swaggerUi:
+    s3Bucket: battery-status-swagger
+    exportType: swagger
+    accepts: application/json
+    swaggerUiConfig:
+      supportedSubmitMethods: []
